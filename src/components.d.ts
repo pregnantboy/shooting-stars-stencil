@@ -13,15 +13,15 @@ import '@stencil/core';
 export namespace Components {
 
   interface ShootingStars {
+    'concentration': number;
     'height': string;
     'image': string;
-    'space': number;
     'width': string;
   }
   interface ShootingStarsAttributes extends StencilHTMLAttributes {
+    'concentration'?: number;
     'height'?: string;
     'image'?: string;
-    'space'?: number;
     'width'?: string;
   }
 }
