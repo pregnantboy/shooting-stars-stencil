@@ -1,3 +1,28 @@
 .star {
-    position: relative;
+  position: relative;
+  animation: fly 2s ease-out infinite;
+}
+
+#background {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+}
+
+@keyframes fly {
+  0% {
+    transform: rotateZ(-45deg) translateX(0);
+    opacity: 1;
+  }
+
+  50% {
+    transform: rotateZ(-45deg) translateX(-100vh);
+    opacity: 0;
+  }
+  100% {
+    transform: rotateZ(-45deg) translateX(-100vh);
+    opacity: 0;
+  }
 }
