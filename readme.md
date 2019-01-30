@@ -2,6 +2,10 @@
 
 ## Installing
 
+```
+npm i -S shooting-stars
+```
+
 ### Angular
 
 AppModule
