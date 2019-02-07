@@ -1,4 +1,7 @@
-# Shooting Stars Web Component
+# Shooting Stars
+Add animated shooting stars to your webpage.
+
+![](https://unpkg.com/shooting-stars/assets/shooting-stars.gif)
 
 ## Installing
 
@@ -33,7 +36,7 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
 
-import { defineCustomElements } from 'test-components/dist/loader';
+import { defineCustomElements } from 'shooting-stars/dist/loader';
 
 if (environment.production) {
   enableProdMode();
@@ -68,8 +71,6 @@ import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
-// test-component is the name of our made up Web Component that we have
-// published to npm:
 import { defineCustomElements } from 'shooting-stars/dist/loader';
 
 ReactDOM.render(<App />, document.getElementById('root'));
@@ -80,14 +81,16 @@ defineCustomElements(window);
 ## Usage
 
 ```HTML
-<shooting-stars image="./star.png" height="10px" width="10px" min-speed="10" max-speed="50" num="10"></shooting-stars>
+<shooting-stars image="./star.png" height="'10px'" width="10" min-speed="10" max-speed="50" num="10"></shooting-stars>
 ```
+Note: component will take the size of parent div.
+
 #### image
 Path to image (string)
 #### height
-height of star (string)
+height of star (number | string)
 #### width
-width of star (string)
+width of star (number | string)
 #### min-speed
 minimum speed (positive integer)
 #### max-speed

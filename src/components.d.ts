@@ -13,20 +13,22 @@ import '@stencil/core';
 export namespace Components {
 
   interface ShootingStars {
-    'height': string;
+    'height': string | number;
     'image': string;
     'maxSpeed': number;
     'minSpeed': number;
     'num': number;
-    'width': string;
+    'rotated': boolean;
+    'width': string | number;
   }
   interface ShootingStarsAttributes extends StencilHTMLAttributes {
-    'height'?: string;
+    'height'?: string | number;
     'image'?: string;
     'maxSpeed'?: number;
     'minSpeed'?: number;
     'num'?: number;
-    'width'?: string;
+    'rotated'?: boolean;
+    'width'?: string | number;
   }
 }
 

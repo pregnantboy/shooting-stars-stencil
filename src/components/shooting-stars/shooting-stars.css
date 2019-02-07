@@ -1,8 +1,17 @@
-.star {
-  position: relative;
+.shooting-stars-star {
+  position: absolute;
   animation-name: fly;
   animation-timing-function: ease-out;
   animation-iteration-count: infinite;
+}
+
+.shooting-stars-star img {
+  height: 100%;
+  width: 100%;
+}
+
+.shooting-stars-star img.rotated {
+  transform: rotateZ(45deg);
 }
 
 #background {

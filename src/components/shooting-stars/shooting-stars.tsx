@@ -3,15 +3,16 @@ import { Component, Prop, Element, Listen } from "@stencil/core";
 @Component({
   tag: "shooting-stars",
   styleUrl: "shooting-stars.css",
-  shadow: true
+  shadow: false
 })
 export class ShootingStars {
 
   // Host element
   @Element() el: HTMLElement;
-  @Prop() image: string;
-  @Prop() height: string = "30px";
-  @Prop() width: string = "30px";
+  @Prop() image: string = "https://unpkg.com/shooting-stars/assets/meteor.svg";
+  @Prop() height: string | number = 40;
+  @Prop() width: string | number = 40;
+  @Prop() rotated: boolean = false;
   @Prop() minSpeed: number = 10;
   @Prop() maxSpeed: number = 50;
   @Prop() num: number = 10;
@@ -38,21 +39,35 @@ export class ShootingStars {
     this.el.style.position = "absolute";
     this.el.style.display = "block";
     const totalWidth = this.el.clientHeight + this.el.clientWidth;
-    const background = this.el.shadowRoot.querySelector("#background");
+    const background = this.el.querySelector("#shooting-stars-background");
     const distanceToTravel = Math.sqrt(Math.pow(this.el.clientHeight, 2) + Math.pow(this.el.clientHeight, 2));
-    this.el.style.setProperty("--distance", "-" + distanceToTravel + "px");
     const spacing = totalWidth / this.num;
 
     for (let i = 0; i < this.num; i++) {
-      let star = document.createElement("img");
-      star.className = "star";
-      star.src = this.image;
-      star.style.height = this.height;
-      star.style.width = this.width;
-      star.style.top = "-" + this.height;
+      let star = document.createElement("div");
+      let starImg = document.createElement("img");
+      starImg.src = this.image;
+      if (this.rotated) {
+        starImg.className = "rotated";
+      }
+      star.className = "shooting-stars-star";
+
+      if (isNaN(Number(this.height))) {
+        star.style.height = this.height.toString();
+      } else {
+        star.style.height = this.height + "px";
+      }
+      star.style.top = "-" + star.style.height;
+      if (isNaN(Number(this.width))) {
+        star.style.width = this.width.toString();
+      } else {
+        star.style.width = this.width + "px";
+      }
       star.style.left = this.calculateX(i, spacing);
       star.style.animationDelay = this.randomizeSeconds(0, this.num, true);
-      star.style.animationDuration = this.randomizeSeconds((100 / this.maxSpeed), (100 / this.minSpeed), false)
+      star.style.animationDuration = this.randomizeSeconds((100 / this.maxSpeed), (100 / this.minSpeed), false);
+      star.style.setProperty("--distance", "-" + distanceToTravel + "px");
+      star.appendChild(starImg);
       background.appendChild(star);
       this.shootingStars.push(star);
     }
@@ -75,8 +90,12 @@ export class ShootingStars {
   }
 
   render() {
+    const backgroundStyles = {
+      position: "relative"
+    };
+
     return (
-      <div id="background">
+      <div id="shooting-stars-background" style={backgroundStyles}>
       </div>
     );
   }

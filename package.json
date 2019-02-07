@@ -1,14 +1,15 @@
 {
   "name": "shooting-stars",
-  "version": "0.0.1",
-  "description": "Stencil Component Starter",
+  "version": "0.0.6",
+  "description": "Shooting stars web component build with stencil.js",
   "module": "dist/esm/index.js",
   "main": "dist/index.js",
   "unpkg": "dist/ionic.js",
   "types": "dist/types/components.d.ts",
   "collection": "dist/collection/collection-manifest.json",
   "files": [
-    "dist/"
+    "dist/",
+    "assets/"
   ],
   "scripts": {
     "build": "stencil build --docs",
