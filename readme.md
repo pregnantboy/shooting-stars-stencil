@@ -1,4 +1,4 @@
-# Shooting Stars
+# Shooting Stars ![](https://img.shields.io/npm/v/shooting-stars.svg)
 Add animated shooting stars to your webpage.
 
 ![](https://unpkg.com/shooting-stars/assets/shooting-stars.gif)
